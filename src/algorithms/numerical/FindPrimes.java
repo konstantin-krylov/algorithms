@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindPrimes {
-	//НАХОЖДЕНИЕ ПРОСТЫХ ЭЛЕМЕНТОВ
+	// НАХОЖДЕНИЕ ПРОСТЫХ ЭЛЕМЕНТОВ
 	public static List<Integer> findPrimes(int maxNumber) {
-		//МАССИВ ДЛЯ СОСТАВНЫХ ЧИСЕЛ
+		// МАССИВ ДЛЯ СОСТАВНЫХ ЧИСЕЛ
 		boolean[] isComposite = new boolean[maxNumber + 1];
-		
+
 		// НАХОДИМ ПРОСТЫЕ ЧИСЛА МЕЖДУ 2 и maxNumber
 		// ИСКЛЮЧАЕМ ЧИСЛА, КРАТНЫЕ 2 (2 НЕ ИСКЛЮЧАЕМ)
-		for (int i = 4; i < maxNumber; i = i + 2) {
+		for (int i = 4; i < maxNumber; i += 2) {
 			isComposite[i] = true;
 		}
 
@@ -21,15 +21,15 @@ public class FindPrimes {
 		while (nextPrime <= stopAt) {
 
 			// ИСКЛЮЧАЕМ ЧИСЛА, КРАТНЫЕ ДАННОМУ ПРОСТОМУ ЧИЛУ
-			for (int j = nextPrime * 2; j < maxNumber; j = j + nextPrime) {
+			for (int j = nextPrime * 2; j < maxNumber; j += nextPrime) {
 				isComposite[j] = true;
 			}
 
 			// ПЕРЕХОД К ЛЕДУЮЩЕМУ ПРОСТОМУ ЧИСЛУ, ПРОПУСКАЯ ЧЕТНЫЕ ЧИСЛА
 			nextPrime = nextPrime + 2;
-			
+
 			while ((nextPrime <= maxNumber) && (isComposite[nextPrime])) {
-				nextPrime = nextPrime + 2;
+				nextPrime += nextPrime;
 			}
 		}
 
