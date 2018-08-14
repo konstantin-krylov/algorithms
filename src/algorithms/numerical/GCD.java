@@ -1,4 +1,4 @@
-package com.algorithm;
+package algorithms.numerical;
 
 public class GCD {
     public static int divider(int A, int B) {
