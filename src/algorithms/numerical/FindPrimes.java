@@ -5,6 +5,7 @@ import java.util.List;
 
 public class FindPrimes {
 	// НАХОЖДЕНИЕ ПРОСТЫХ ЭЛЕМЕНТОВ
+	//Решето Эрастосфена
 	public static List<Integer> findPrimes(int maxNumber) {
 		// МАССИВ ДЛЯ СОСТАВНЫХ ЧИСЕЛ
 		boolean[] isComposite = new boolean[maxNumber + 1];
@@ -25,11 +26,11 @@ public class FindPrimes {
 				isComposite[j] = true;
 			}
 
-			// ПЕРЕХОД К ЛЕДУЮЩЕМУ ПРОСТОМУ ЧИСЛУ, ПРОПУСКАЯ ЧЕТНЫЕ ЧИСЛА
-			nextPrime = nextPrime + 2;
+			// ПЕРЕХОД К СЛЕДУЮЩЕМУ ПРОСТОМУ ЧИСЛУ, ПРОПУСКАЯ ЧЕТНЫЕ ЧИСЛА
+			nextPrime += 2 ;
 
 			while ((nextPrime <= maxNumber) && (isComposite[nextPrime])) {
-				nextPrime += nextPrime;
+				nextPrime += 2;
 			}
 		}
 
